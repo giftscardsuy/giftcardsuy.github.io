@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GiftsCardsUY | Gift Cards Digitales</title>
+
+    <meta name="description"
+        content="GiftsCardsUY - Gift cards y códigos digitales en Uruguay. Steam, PlayStation, Xbox, Nintendo, Roblox y más.">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header class="header">
+
+    <div class="container nav">
+
+        <a href="#inicio" class="logo">
+            GiftsCards<span>UY</span>
+        </a>
+
+        <nav class="desktop-menu">
+            <a href="#productos">Productos</a>
+            <a href="#como-funciona">Cómo funciona</a>
+            <a href="#faq">Preguntas frecuentes</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+
+        <button class="cart-button" onclick="openCart()">
+            🛒
+            <span>Carrito</span>
+            <b id="cart-count">0</b>
+        </button>
+
+        <button class="mobile-menu-button" onclick="toggleMobileMenu()">
+            ☰
+        </button>
+
+    </div>
+
+    <div id="mobile-menu" class="mobile-menu">
+
+        <a href="#productos" onclick="closeMobileMenu()">Productos</a>
+        <a href="#como-funciona" onclick="closeMobileMenu()">Cómo funciona</a>
+        <a href="#faq" onclick="closeMobileMenu()">Preguntas frecuentes</a>
+        <a href="#contacto" onclick="closeMobileMenu()">Contacto</a>
+
+    </div>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section id="inicio" class="hero">
+
+    <div class="hero-background"></div>
+
+    <div class="container hero-content">
+
+        <div class="badge">
+            🇺🇾 TIENDA DIGITAL URUGUAYA
+        </div>
+
+        <h1>
+            Tus códigos digitales,
+            <span>rápido y seguro.</span>
+        </h1>
+
+        <p>
+            Gift cards para videojuegos, entretenimiento y mucho más.
+            Comprá online y recibí tu código de forma rápida.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="#productos" class="button primary">
+                Ver productos →
+            </a>
+
+            <a href="#como-funciona" class="button secondary">
+                ¿Cómo funciona?
+            </a>
+
+        </div>
+
+        <div class="trust">
+
+            <div>
+                <strong>⚡</strong>
+                <span>Entrega rápida</span>
+            </div>
+
+            <div>
+                <strong>🔒</strong>
+                <span>Compra segura</span>
+            </div>
+
+            <div>
+                <strong>🇺🇾</strong>
+                <span>Atención local</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CATEGORÍAS ================= -->
+
+<section class="categories">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <span class="eyebrow">
+                EXPLORÁ
+            </span>
+
+            <h2>
+                Encontrá lo que buscás
+            </h2>
+
+        </div>
+
+        <div class="category-grid">
+
+            <button onclick="filterCategory('Steam')">
+                🎮
+                <span>Steam</span>
+            </button>
+
+            <button onclick="filterCategory('PlayStation')">
+                🎮
+                <span>PlayStation</span>
+            </button>
+
+            <button onclick="filterCategory('Xbox')">
+                🟩
+                <span>Xbox</span>
+            </button>
+
+            <button onclick="filterCategory('Nintendo')">
+                🔴
+                <span>Nintendo</span>
+            </button>
+
+            <button onclick="filterCategory('Roblox')">
+                🟦
+                <span>Roblox</span>
+            </button>
+
+            <button onclick="filterCategory('Entretenimiento')">
+                🎵
+                <span>Entretenimiento</span>
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PRODUCTOS ================= -->
+
+<section id="productos" class="products-section">
+
+    <div class="container">
+
+        <div class="products-header">
+
+            <div>
+
+                <span class="eyebrow">
+                    CATÁLOGO
+                </span>
+
+                <h2>
+                    Nuestros productos
+                </h2>
+
+            </div>
+
+            <div class="filters">
+
+                <input
+                    type="search"
+                    id="search"
+                    placeholder="🔎 Buscar producto..."
+                    oninput="renderProducts()"
+                >
+
+                <select id="category" onchange="renderProducts()">
+
+                    <option value="Todos">
+                        Todas las categorías
+                    </option>
+
+                    <option value="Steam">
+                        Steam
+                    </option>
+
+                    <option value="PlayStation">
+                        PlayStation
+                    </option>
+
+                    <option value="Xbox">
+                        Xbox
+                    </option>
+
+                    <option value="Nintendo">
+                        Nintendo
+                    </option>
+
+                    <option value="Roblox">
+                        Roblox
+                    </option>
+
+                    <option value="Entretenimiento">
+                        Entretenimiento
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <div id="product-grid" class="product-grid"></div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= COMO FUNCIONA ================= -->
+
+<section id="como-funciona" class="how-section">
+
+    <div class="container">
+
+        <div class="section-header center">
+
+            <span class="eyebrow">
+                SIMPLE Y RÁPIDO
+            </span>
+
+            <h2>
+                ¿Cómo funciona?
+            </h2>
+
+            <p>
+                Comprar tu gift card es muy fácil.
+            </p>
+
+        </div>
+
+
+        <div class="steps">
+
+            <div class="step">
+
+                <span class="step-number">
+                    01
+                </span>
+
+                <div class="step-icon">
+                    🛍️
+                </div>
+
+                <h3>
+                    Elegí tu producto
+                </h3>
+
+                <p>
+                    Seleccioná la gift card o código digital
+                    que querés comprar.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <span class="step-number">
+                    02
+                </span>
+
+                <div class="step-icon">
+                    💳
+                </div>
+
+                <h3>
+                    Realizá el pago
+                </h3>
+
+                <p>
+                    Coordiná el pago utilizando los métodos
+                    disponibles.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <span class="step-number">
+                    03
+                </span>
+
+                <div class="step-icon">
+                    📩
+                </div>
+
+                <h3>
+                    Recibí tu código
+                </h3>
+
+                <p>
+                    Confirmamos el pago y te enviamos
+                    tu código digital.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="notice">
+
+            ℹ️
+
+            <strong>
+                Entrega manual:
+            </strong>
+
+            verificamos cada pago antes de enviar el
+            código para brindarte mayor seguridad.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= POR QUÉ NOSOTROS ================= -->
+
+<section class="why-section">
+
+    <div class="container why-grid">
+
+        <div>
+
+            <span class="eyebrow">
+                ¿POR QUÉ ELEGIRNOS?
+            </span>
+
+            <h2>
+                Comprá digital.
+                <span>Sin vueltas.</span>
+            </h2>
+
+            <p>
+                En GiftsCardsUY buscamos que comprar
+                productos digitales en Uruguay sea simple,
+                rápido y confiable.
+            </p>
+
+        </div>
+
+
+        <div class="features">
+
+            <article>
+
+                <div class="feature-icon">
+                    ⚡
+                </div>
+
+                <div>
+
+                    <h3>
+                        Rápido
+                    </h3>
+
+                    <p>
+                        Procesamos tus pedidos lo antes posible.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article>
+
+                <div class="feature-icon">
+                    🔐
+                </div>
+
+                <div>
+
+                    <h3>
+                        Seguro
+                    </h3>
+
+                    <p>
+                        Verificamos los pagos antes de entregar.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article>
+
+                <div class="feature-icon">
+                    💬
+                </div>
+
+                <div>
+
+                    <h3>
+                        Atención
+                    </h3>
+
+                    <p>
+                        Estamos disponibles para ayudarte.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article>
+
+                <div class="feature-icon">
+                    💰
+                </div>
+
+                <div>
+
+                    <h3>
+                        Buenos precios
+                    </h3>
+
+                    <p>
+                        Buscamos ofrecer precios competitivos.
+                    </p>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FAQ ================= -->
+
+<section id="faq" class="faq-section">
+
+    <div class="container faq-container">
+
+        <div class="section-header center">
+
+            <span class="eyebrow">
+                AYUDA
+            </span>
+
+            <h2>
+                Preguntas frecuentes
+            </h2>
+
+        </div>
+
+
+        <details>
+
+            <summary>
+                ¿Cómo recibo mi código?
+            </summary>
+
+            <p>
+                Luego de confirmar el pago,
+                nos comunicamos contigo y enviamos
+                el código digital correspondiente.
+            </p>
+
+        </details>
+
+
+        <details>
+
+            <summary>
+                ¿La entrega es automática?
+            </summary>
+
+            <p>
+                Actualmente la entrega es manual.
+                Esto nos permite verificar cada pago
+                antes de enviar el código.
+            </p>
+
+        </details>
+
+
+        <details>
+
+            <summary>
+                ¿Puedo comprar desde Uruguay?
+            </summary>
+
+            <p>
+                Sí. GiftsCardsUY está orientada
+                principalmente a clientes de Uruguay.
+            </p>
+
+        </details>
+
+
+        <details>
+
+            <summary>
+                ¿Qué hago si tengo un problema?
+            </summary>
+
+            <p>
+                Contactanos por WhatsApp y te ayudaremos
+                a resolver cualquier inconveniente con tu compra.
+            </p>
+
+        </details>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CONTACTO ================= -->
+
+<section id="contacto" class="contact-section">
+
+    <div class="container contact-grid">
+
+        <div>
+
+            <span class="eyebrow">
+                CONTACTO
+            </span>
+
+            <h2>
+                ¿Necesitás ayuda?
+            </h2>
+
+            <p>
+                Estamos para ayudarte antes y después
+                de tu compra.
+            </p>
+
+            <a
+                id="whatsapp-main"
+                href="#"
+                target="_blank"
+                class="button primary"
+            >
+                💬 Escribir por WhatsApp
+            </a>
+
+        </div>
+
+
+        <form onsubmit="sendContactForm(event)">
+
+            <input
+                type="text"
+                id="contact-name"
+                placeholder="Tu nombre"
+                required
+            >
+
+            <input
+                type="email"
+                id="contact-email"
+                placeholder="Tu email"
+                required
+            >
+
+            <textarea
+                id="contact-message"
+                rows="6"
+                placeholder="¿En qué podemos ayudarte?"
+                required
+            ></textarea>
+
+            <button
+                type="submit"
+                class="button primary"
+            >
+                Enviar consulta
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+    <div class="container footer-grid">
+
+        <div>
+
+            <a href="#inicio" class="logo">
+                GiftsCards<span>UY</span>
+            </a>
+
+            <p>
+                Gift cards y códigos digitales
+                para Uruguay.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h4>
+                Tienda
+            </h4>
+
+            <a href="#productos">
+                Productos
+            </a>
+
+            <a href="#como-funciona">
+                Cómo funciona
+            </a>
+
+            <a href="#faq">
+                Preguntas frecuentes
+            </a>
+
+        </div>
+
+
+        <div>
+
+            <h4>
+                Ayuda
+            </h4>
+
+            <a href="#contacto">
+                Contacto
+            </a>
+
+            <a href="#">
+                Términos y condiciones
+            </a>
+
+            <a href="#">
+                Política de privacidad
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="container copyright">
+
+        © <span id="year"></span>
+        GiftsCardsUY.
+        Todos los derechos reservados.
+
+    </div>
+
+</footer>
+
+
+<!-- ================= WHATSAPP ================= -->
+
+<a
+    id="whatsapp-float"
+    class="whatsapp"
+    href="#"
+    target="_blank"
+>
+    💬
+</a>
+
+
+<!-- ================= CARRITO ================= -->
+
+<div
+    id="cart-overlay"
+    class="cart-overlay"
+    onclick="closeCart(event)"
+>
+
+    <aside
+        class="cart"
+        onclick="event.stopPropagation()"
+    >
+
+        <div class="cart-header">
+
+            <h2>
+                Tu carrito
+            </h2>
+
+            <button onclick="closeCart()">
+                ✕
+            </button>
+
+        </div>
+
+
+        <div
+            id="cart-items"
+            class="cart-items"
+        ></div>
+
+
+        <div class="cart-footer">
+
+            <div class="cart-total">
+
+                <span>
+                    Total
+                </span>
+
+                <strong id="cart-total">
+                    $0
+                </strong>
+
+            </div>
+
+
+            <button
+                class="button primary full"
+                onclick="checkoutWhatsApp()"
+            >
+                Comprar por WhatsApp
+            </button>
+
+
+            <small>
+                El pedido se coordina por WhatsApp.
+                El código se entrega manualmente una vez
+                confirmado el pago.
+            </small>
+
+        </div>
+
+    </aside>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
